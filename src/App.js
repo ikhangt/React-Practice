@@ -1,16 +1,33 @@
-import React from 'react';
-import Toggle from './Toggle';
-import './App.css';
-import formatDistance from 'date-fns/formatDistance';
-
+import React from "react";
+import "./App.css";
+import formatDistance from "date-fns/formatDistance";
+import ReactTable from "react-table";
 function App() {
-  const a = [0,1,2];
+  const data = [
+    {
+      name: "A",
+      age: 12,
+    },
+  ];
+  const columns = [
+    {
+      Header: "Name",
+      accessor: "name",
+    },
+    {
+      Header: "Age",
+      accessor: "age",
+    },
+  ];
   return (
     <div className="App">
       <header className="App-header">
-        
-        
-  <div>{formatDistance(new Date(), new Date(), { addSuffix: true })}</div>
+        <ReactTable
+          data={data}
+          columns={columns}
+          defaultPageSize={2}
+          pageSizeOptions={[2, 4, 6]}
+        />
       </header>
     </div>
   );
